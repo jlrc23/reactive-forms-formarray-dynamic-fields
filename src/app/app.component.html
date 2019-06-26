@@ -1,0 +1,17 @@
+<button (click)="addItem()">Add</button>
+<form [formGroup]="orderForm">
+  <div formArrayName="items"
+    *ngFor="let item of orderForm.get('items').controls; let i=index">
+    <div [formGroupName]="i">
+      <input formControlName="name" placeholder="Item name" />
+      <input formControlName="description" placeholder="Item description" />
+      <input formControlName="price" placeholder="Item price" />
+    </div>
+    Chosen name: <i>{{ orderForm.controls.items.controls[i].controls.name.value }}</i>
+  </div>
+</form>
+<br>
+Example from:
+<a href="https://alligator.io/angular/reactive-forms-formarray-dynamic-fields/" target="_blank">  
+  https://alligator.io/angular/reactive-forms-formarray-dynamic-fields/
+</a>
